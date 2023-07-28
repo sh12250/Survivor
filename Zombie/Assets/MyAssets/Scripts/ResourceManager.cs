@@ -1,6 +1,9 @@
+using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Text.RegularExpressions;
+using System.IO;
 //using UnityEditor; ※ Build 안됨
 
 public class ResourceManager : MonoBehaviour
@@ -25,7 +28,10 @@ public class ResourceManager : MonoBehaviour
 
     // private string dataPath = default;
     private static string zombieDataPath = default;
+    private static string zombieDataCSVPath = default;
     public ZombieData zombieData_default = default;
+    [SerializeField]
+    public List<Dictionary<string, object>> zombieData_default_temp = default;
 
     private void Awake()
     {
@@ -36,9 +42,25 @@ public class ResourceManager : MonoBehaviour
         zombieDataPath = "Scriptables";
         zombieDataPath = string.Format("{0}/{1}", zombieDataPath, "Zombie Data Default");
 
+        zombieDataCSVPath = "ZombieDatas";
+        zombieDataCSVPath = string.Format("{0}/{1}", zombieDataCSVPath, "ZombieSurvival Datas - ZombieDatas");
+
         // 런타임에 데이터를 저장하는 것을 캐싱이라고 한다
         // zombieData_default = AssetDatabase.LoadAssetAtPath<ZombieData>(zombieDataPath);
         zombieData_default = Resources.Load<ZombieData>(zombieDataPath);
+        zombieData_default_temp = CSVReader.Read(zombieDataCSVPath);
+
+        //Debug.LogFormat("{0}", zombieData_default_temp[0]["HEALTH"]);
+        //int loopCnt = 0;
+        //foreach (var csvDict in zombieData_default_temp)
+        //{
+        //    foreach (var key_ in csvDict.Keys)
+        //    {
+        //        Debug.LogFormat("리스트 인덱스: {2}, 키: {0}, 값: {1}",
+        //            key_, csvDict[key_], loopCnt);
+        //    }
+        //    loopCnt++;
+        //}
 
         //Debug.LogFormat("Zombie Data Path: {0}", zombieDataPath);
         //Debug.LogFormat("Zombie Data: {0}, {1}, {2}", zombieData_default.health, zombieData_default.damage, zombieData_default.speed);

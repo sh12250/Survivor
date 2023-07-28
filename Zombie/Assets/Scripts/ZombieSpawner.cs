@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 // 좀비 게임 오브젝트를 주기적으로 생성
@@ -14,7 +15,41 @@ public class ZombieSpawner : MonoBehaviour
 
     private void Awake()
     {
-        zombieDatas[0] = ResourceManager.instance.zombieData_default;
+        zombieDatas = new ZombieData[3];
+        zombieDatas[0] = ScriptableObject.CreateInstance<ZombieData>();
+        zombieDatas[1] = ScriptableObject.CreateInstance<ZombieData>();
+        zombieDatas[2] = ScriptableObject.CreateInstance<ZombieData>();
+        //zombieDatas[0] = ResourceManager.instance.zombieData_default;
+
+        float temp = 0f;
+
+        zombieDatas[0].name = ResourceManager.instance.zombieData_default_temp[0]["ZOMBIE_TYPE"].ToString();
+        float.TryParse(ResourceManager.instance.zombieData_default_temp[0]["HEALTH"].ToString(), out temp);
+        Debug.LogFormat("temp => {0}", temp);
+        zombieDatas[0].health = temp;
+        float.TryParse(ResourceManager.instance.zombieData_default_temp[0]["DAMAGE"].ToString(), out temp);
+        zombieDatas[0].damage = temp;
+        float.TryParse(ResourceManager.instance.zombieData_default_temp[0]["SPEED"].ToString(), out temp);
+        zombieDatas[0].speed = temp;
+        ColorUtility.TryParseHtmlString(ResourceManager.instance.zombieData_default_temp[0]["SKIN_COLOR"].ToString(), out zombieDatas[0].skinColor);
+        zombieDatas[1].name = ResourceManager.instance.zombieData_default_temp[1]["ZOMBIE_TYPE"].ToString();
+        float.TryParse(ResourceManager.instance.zombieData_default_temp[1]["HEALTH"].ToString(), out temp);
+        zombieDatas[1].health = temp;
+        float.TryParse(ResourceManager.instance.zombieData_default_temp[1]["DAMAGE"].ToString(), out temp);
+        zombieDatas[1].damage = temp;
+        float.TryParse(ResourceManager.instance.zombieData_default_temp[1]["SPEED"].ToString(), out temp);
+        zombieDatas[1].speed = temp;
+        ColorUtility.TryParseHtmlString(ResourceManager.instance.zombieData_default_temp[1]["SKIN_COLOR"].ToString(), out zombieDatas[1].skinColor);
+
+        zombieDatas[2].name =
+            ResourceManager.instance.zombieData_default_temp[2]["ZOMBIE_TYPE"].ToString();
+        float.TryParse(ResourceManager.instance.zombieData_default_temp[2]["HEALTH"].ToString(), out temp);
+        zombieDatas[2].health = temp;
+        float.TryParse(ResourceManager.instance.zombieData_default_temp[2]["DAMAGE"].ToString(), out temp);
+        zombieDatas[2].damage = temp;
+        float.TryParse(ResourceManager.instance.zombieData_default_temp[2]["SPEED"].ToString(), out temp);
+        zombieDatas[2].speed = temp;
+        ColorUtility.TryParseHtmlString(ResourceManager.instance.zombieData_default_temp[2]["SKIN_COLOR"].ToString(), out zombieDatas[2].skinColor);
     }
 
     private void Update()

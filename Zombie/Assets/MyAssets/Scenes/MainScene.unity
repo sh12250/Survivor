@@ -156,10 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombiePrefab: {fileID: 4510601769248270125, guid: 9be53dfdd2fecfc4e8c7960d1389a35b,
     type: 3}
-  zombieDatas:
-  - {fileID: 0}
-  - {fileID: 11400000, guid: e5cb4d10cc7850542969aa43d6a0720a, type: 2}
-  - {fileID: 11400000, guid: fe39ffe9d9b1a334b8efca6ed866f1d0, type: 2}
+  zombieDatas: []
   spawnPoints:
   - {fileID: 97208373}
   - {fileID: 97208372}
@@ -586,6 +583,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1099331957 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1107999300191670, guid: 63226789a2ac34fec8493b064c47bd44,
+    type: 3}
+  m_PrefabInstance: {fileID: 1133597666}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1099331959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099331957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb05e33411f928642b11ed3a311beb0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1133597666
 PrefabInstance:
   m_ObjectHideFlags: 0
