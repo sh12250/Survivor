@@ -60,6 +60,18 @@ public class Zombie : LivingEntity
         zombieRenderer.material.color = zombieData.skinColor;
     }
 
+    // 좀비 AI의 초기 스펙을 결정하는 셋업 메서드
+    public void Setup(ZombieData2 zombieData)
+    {
+        startingHealth = zombieData.health;
+        health = zombieData.health;
+        damage = zombieData.damage;
+
+        navMeshAgent.speed = zombieData.speed;
+
+        zombieRenderer.material.color = zombieData.skinColor;
+    }
+
     private void Start()
     {
         // 게임 오브젝트 활성화와 동시에 AI의 추적 루틴 시작
