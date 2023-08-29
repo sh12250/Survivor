@@ -20,14 +20,14 @@ public class ZombieSpawner : MonoBehaviourPun, IPunObservable {
     // 주기적으로 자동 실행되는, 동기화 메서드
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
         // 로컬 오브젝트라면 쓰기 부분이 실행됨
-        if (stream.IsWriting)
+        if (stream.IsWriting)   // isLocal
         {
             // 남은 좀비 수를 네트워크를 통해 보내기
             stream.SendNext(zombies.Count);
             // 현재 웨이브를 네트워크를 통해 보내기
             stream.SendNext(wave);
         }
-        else
+        else                    // isRemote
         {
             // 리모트 오브젝트라면 읽기 부분이 실행됨
             // 남은 좀비 수를 네트워크를 통해 받기
